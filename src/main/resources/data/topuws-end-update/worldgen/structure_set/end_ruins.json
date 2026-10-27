@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "topuws-end-update:end_ruins",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 6,
+    "separation": 2,
+    "salt": 18374621,
+    "spread_type": "linear"
+  }
+}

@@ -1,0 +1,12 @@
+
+{
+  "required": true,
+  "package": "com.topuw.end.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "JigsawStructureMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

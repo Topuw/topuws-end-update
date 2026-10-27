@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "topuws-end-update:item/endermite_bucket"
+  }
+}
