@@ -13,6 +13,11 @@
           "type": "minecraft:item",
           "name": "minecraft:diamond",
           "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ender_pearl",
+          "weight": 4
         }
       ]
     }

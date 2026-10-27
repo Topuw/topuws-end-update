@@ -42,7 +42,7 @@ public class TopuwSEndUpdate implements ModInitializer {
 
     private static void registerEndermiteBucketInteractions() {
 
-        // Puste wiadro + klikniÄ™cie endermita = zĹ‚apanie.
+  
         UseEntityCallback.EVENT.register((player, level, hand, entity, hitResult) -> {
             ItemStack heldStack = player.getItemInHand(hand);
 
@@ -59,18 +59,18 @@ public class TopuwSEndUpdate implements ModInitializer {
             ItemStack filledBucket = new ItemStack(ModItems.ENDERMITE_BUCKET);
 
             if (player.getAbilities().instabuild) {
-                // W trybie kreatywnym nie zuĹĽywamy pustego wiadra.
+                // W trybie kreatywnym nie zużywamy pustego wiadra.
                 if (!player.getInventory().add(filledBucket)) {
-                    LOGGER.warn("Ekwipunek pełny — nie udało się dodać wiadra z endermitem.");
-                }
+    				LOGGER.warn("Nie udało się dodać wiadra z endermitem do ekwipunku.");
+}
             } else if (heldStack.getCount() == 1) {
                 player.setItemInHand(hand, filledBucket);
             } else {
                 heldStack.shrink(1);
 
-                if (!player.getInventory().add(filledBucket)) {
-                    LOGGER.warn("Ekwipunek pełny — nie udało się dodać wiadra z endermitem.");
-                }
+			if (!player.getInventory().add(filledBucket)) {
+    			LOGGER.warn("Nie udało się dodać wiadra z endermitem do ekwipunku.");
+}
             }
 
             mite.discard();
@@ -79,7 +79,6 @@ public class TopuwSEndUpdate implements ModInitializer {
             return InteractionResult.SUCCESS;
         });
 
-        // Wiadro z endermitem + klikniÄ™cie bloku = wypuszczenie.
         UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
             ItemStack heldStack = player.getItemInHand(hand);
 
@@ -123,7 +122,7 @@ public class TopuwSEndUpdate implements ModInitializer {
 
             if (!level.getBlockState(spawnPos).isAir()
                     || !level.getBlockState(spawnPos.above()).isAir()) {
-                // SprĂłbuj postawiÄ‡ endermita nad klikniÄ™tym blokiem.
+                // Spróbuj postawić endermita nad klikniętym blokiem.
                 spawnPos = hitResult.getBlockPos().above();
 
                 if (!level.getBlockState(spawnPos).isAir()
@@ -159,13 +158,12 @@ public class TopuwSEndUpdate implements ModInitializer {
                 return;
             }
 
-            // PrĂłba spawnu co 2 sekundy.
+            // Próba spawnu co 2 sekundy.
             if (level.getGameTime() % 40 != 0) {
                 return;
             }
 
             for (ServerPlayer player : level.players()) {
-                // Maksymalnie 4 endermity w promieniu 32 blokĂłw.
                 AABB area = player.getBoundingBox().inflate(32.0);
 
                 if (level.getEntitiesOfClass(Endermite.class, area).size() >= 4) {
